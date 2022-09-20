@@ -1,0 +1,31 @@
+{
+	"name": "cryptobot-matrix",
+	"version": "1.0.0",
+	"description": "Cryptocurrency bot for Matrix Servers",
+	"main": "index.mjs",
+	"scripts": {
+		"start": "node index.mjs"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Rabbit-Company/CryptoBot-Matrix.git"
+	},
+	"keywords": [
+		"crypto",
+		"cryptocurrency",
+		"matrix",
+		"matrix-bot",
+		"bot"
+	],
+	"author": "Rabbit Company LLC",
+	"license": "GPL-3.0",
+	"bugs": {
+		"url": "https://github.com/Rabbit-Company/CryptoBot-Matrix/issues"
+	},
+	"homepage": "https://github.com/Rabbit-Company/CryptoBot-Matrix#readme",
+	"dependencies": {
+		"dotenv": "^16.0.2",
+		"matrix-bot-sdk": "^0.6.1",
+		"node-fetch": "^3.2.10"
+	}
+}
