@@ -12,4 +12,5 @@ $crypto - Show price of specified crypto
 Example: $btc
 
 ## Images
-![image](https://user-images.githubusercontent.com/44822563/191362095-49a583e5-6013-422f-b515-4b50b64ce3e7.png)
+
+![image](https://user-images.githubusercontent.com/44822563/191483105-3f1addd9-7b9f-45a9-9311-82f9d52c4957.png)
