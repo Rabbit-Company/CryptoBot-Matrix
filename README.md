@@ -1,7 +1,7 @@
 # CryptoBot-Matrix
 CryptoBot allows you to monitor crypto prices inside Matrix rooms.
 
-You can invite it to your Matrix Room with command: /invite @crypto:matrix.rabbit-company.com
+You can invite it to your Matrix Room with command: **/invite @crypto:matrix.rabbit-company.com**
 
 ## Cryptocurrencies
 CryptoBot supports over 12900 cryptocurrencies / tokens.
