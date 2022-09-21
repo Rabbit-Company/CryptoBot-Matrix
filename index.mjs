@@ -82,15 +82,14 @@ function fetchPrices(){
 getNames();
 
 client.on("room.message", handleCommand);
-client.start().then(() => console.log("[" + new Date().toLocaleString() + "] Client started!"));
+client.start().then(() => console.log("[" + new Date().toLocaleString() + "] Bot started!"));
 
 async function handleCommand(roomId, event) {
-	if (!event["content"]) return;
-	if (event["content"]["msgtype"] !== "m.text") return;
+	if (event['content']?.['msgtype'] !== 'm.text') return;
 	if (event["sender"] === await client.getUserId()) return;
 
 	const body = event["content"]["body"];
-	if (!body || !body.startsWith(prefix)) return;
+	if (!body?.startsWith(prefix)) return;
 
 	let crypto = body.toUpperCase().replace(prefix, "");
 	if(!cryptos.includes(crypto)) return;
@@ -102,8 +101,5 @@ async function handleCommand(roomId, event) {
 	else if(p >= 0.000001) p = p.toFixed(8);
 	else p = p.toFixed(12);
 
-	let message = "Price of " + crypto + " is $" + p;
-	let reply = RichReply.createFor(roomId, event, message, message);
-	reply["msgtype"] = "m.notice";
-	client.sendMessage(roomId, reply);
+	await client.replyNotice(roomId, event, "Price of " + crypto + " is $" + p);
 }
