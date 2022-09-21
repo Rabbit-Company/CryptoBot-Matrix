@@ -16,6 +16,7 @@ AutojoinRoomsMixin.setupOnClient(client);
 
 var round = 1;
 var timer = 10000;
+var prefix = "$";
 var idsArray = [];
 var names = null;
 var prices = new Map();
@@ -89,12 +90,19 @@ async function handleCommand(roomId, event) {
 	if (event["sender"] === await client.getUserId()) return;
 
 	const body = event["content"]["body"];
-	if (!body || !body.startsWith("!")) return;
+	if (!body || !body.startsWith(prefix)) return;
 
-	let crypto = body.toUpperCase().replace("!", "");
+	let crypto = body.toUpperCase().replace(prefix, "");
 	if(!cryptos.includes(crypto)) return;
 
-	let message = "Price of " + crypto + " is $" + prices.get(crypto);
+	let p = parseFloat(prices.get(crypto));
+	if(p >= 1) p = p.toFixed(2);
+	else if(p >= 0.01) p = p.toFixed(4);
+	else if(p >= 0.0001) p = p.toFixed(6);
+	else if(p >= 0.000001) p = p.toFixed(8);
+	else p = p.toFixed(12);
+
+	let message = "Price of " + crypto + " is $" + p;
 	let reply = RichReply.createFor(roomId, event, message, message);
 	reply["msgtype"] = "m.notice";
 	client.sendMessage(roomId, reply);
